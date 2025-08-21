@@ -6,15 +6,77 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <label for="Peso">Kg</label>
-    <input type="range" id="Barra" min="0" max="200" value="50" oninput="valor.innerText = this.value">
-    <span id="valor">100</span>
+<div class ="caixa">
+    <div class = "campo">
+        <div class="campinho">
+        <label for="Peso"> Peso (Kg):</label>
+        <input type="range" id="Peso" min="0.00" max="200" value="50"> 
+        <span id="valorp">100</span>
+</div>
 
-    <br><br>
+<div class="campo">
+    <label for="Altura">Altura (M):</label>
+    <input type="range" id="Altura" min="1.01" max="2.99" value="1.50" step="0.01"> 
+    <span id="valora">1.50</span>
+</div> 
+    
+<div class = resultado>
+    <strong>IMC:</strong> 
+    <span id="imc">0</span>
+</div>
+<p id="classificacao"></p>
+</div>
 
-    <label for="Tamanho">Altura</label>
-    <input type="range" id="Barra2" min="1.00" max="3.00" value="1,50" step="0.01" oninput="valor2.innerText = this.value">
-    <span id="valor2">1.50</span>
+<script>
+    const Peso = document.getElementById ('Peso')
+    const Altura = document.getElementById ('Altura')
+    const valorp = document.getElementById ('valorp')
+    const valora = document.getElementById ('valora')
+    const resultado = document.getElementById ('imc')
+    const classificacao = document.getElementById ('classificacao')
+
+function calcular () {
+    const p = parseFloat (Peso.value);
+    const a = parseFloat (Altura.value);
+    if (a > 0) {
+    const imc = (p / (a * a)).toFixed(2);
+    resultado.textContent = imc;
+
+    let texto = '';
+    let cor = '';
+    if (imc < 18.5) {
+        texto = 'Abaixo do peso';
+        cor = '#3498db'; 
+    } else if (imc >= 18.5 && imc < 25) {
+        texto = 'Peso normal';
+        cor = '#27ae60'; 
+    } else if (imc >= 25 && imc <= 29.9) {
+        texto = 'Sobrepeso';
+        cor = '#f1c40f'; 
+    } else {
+        texto = 'Obesidade';
+        cor = '#e74c3c'; 
+    }
+
+    classificacao.textContent = texto;
+    classificacao.style.color = cor;
+    resultado.style.color = cor;
+    }
+}
+
+Peso.addEventListener('input', () => {
+    valorp.textContent = Peso.value;
+    calcular();
+});
+Altura.addEventListener('input', () => {
+    valora.textContent = Altura.value;
+    calcular();
+});
+
+calcular();
+
+
+</script>
 
 </body>
 </html>
