@@ -1,5 +1,6 @@
 body{
-    color: rgb(0, 0, 0);
+    color: white;
+    -webkit-text-stroke: 1px black ;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -15,7 +16,6 @@ body{
 .campinho{
     display: flex;
     flex-direction: column;
-    gap: 20px;
     text-align: center;
 }
 
@@ -23,7 +23,7 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 8px;
 }
 
@@ -51,6 +51,16 @@ input[type="range"] {
     gap: 20px;
     text-align: center;
 } 
+
+.campo input[type="range"] {
+    appearance: none;
+    outline: none;
+    width: 300px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 5px;   
+    cursor: pointer;
+}
 
 
 
